@@ -20,34 +20,55 @@ namespace InventoryManagement
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            string connString = @"Data Source=NB-ZALEWSKI\NAVDEMO;Initial Catalog=InventorySystem;Integrated Security=True";
-            string getLoginInfo = "SELECT * FROM [InventorySystem].[dbo].[Login] WHERE UserName='" + UserNameTextBox.Text.Trim() + "' AND Password ='" + PasswordTextBox.Text.Trim() + "'";
-
-            SqlConnection sqlConnection = new SqlConnection(connString);
-            //SqlCommand sqlGetLoginInfo = new SqlCommand(getLoginInfo);
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(getLoginInfo, connString);
-            DataTable loginDataTable = new DataTable();
-            sqlDataAdapter.Fill(loginDataTable);
-
-            if (loginDataTable.Rows.Count >= 1)
+            try
             {
-                Hide();
-                InventoryMainForm inventoryMainForm = new InventoryMainForm();
-                inventoryMainForm.Show();
-            }
-            else
-            {
-                MessageBox.Show("Incorect login or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SqlConnectionStringBuilder stringBuilder = new SqlConnectionStringBuilder();
+                stringBuilder.DataSource = @"NB-ZALEWSKI\NAVDEMO";
+                stringBuilder.InitialCatalog = "InventorySystem";
+                stringBuilder.IntegratedSecurity = true;
+                
+                string getLoginInfo = "SELECT * FROM [InventorySystem].[dbo].[Login] WHERE UserName='" + UserNameTextBox.Text.Trim() + "' AND Password ='" + PasswordTextBox.Text.Trim() + "'";
 
+                using (SqlConnection sqlConnection = new SqlConnection(stringBuilder.ConnectionString))
+                {
+                    using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(getLoginInfo, stringBuilder.ConnectionString))
+                    {
+                        using (DataTable loginDataTable = new DataTable())
+                        {
+                            sqlDataAdapter.Fill(loginDataTable);
+
+                            if (loginDataTable.Rows.Count >= 1)
+                            {
+                                Hide();
+                                InventoryMainForm inventoryMainForm = new InventoryMainForm();
+                                inventoryMainForm.Show();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Incorect login or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                ClearTextBoxes();
+                            }
+                        }                                               
+                    }                                       
+                }
             }
-            
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }                                            
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
+            ClearTextBoxes();
+        }
+
+        public void ClearTextBoxes()
+        {
             UserNameTextBox.Clear();
             PasswordTextBox.Clear();
             UserNameTextBox.Focus();
+
         }
     }
 }
