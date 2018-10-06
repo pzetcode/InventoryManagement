@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace InventoryManagement
 {
@@ -18,7 +19,18 @@ namespace InventoryManagement
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
-        {                        
+        {
+            string connString = @"Data Source=NB-ZALEWSKI\NAVDEMO;Initial Catalog=InventorySystem;Integrated Security=True";
+            string getLoginInfo = "SELECT * FROM [InventorySystem].[dbo].[Login] WHERE UserName='" + UserNameTextBox.Text.Trim() + "' AND Password ='" + PasswordTextBox.Text.Trim() + "'";
+
+            SqlConnection sqlConnection = new SqlConnection(connString);
+            //SqlCommand sqlGetLoginInfo = new SqlCommand(getLoginInfo);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(getLoginInfo, connString);
+            DataTable loginDataTable = new DataTable();
+
+            sqlDataAdapter.Fill(loginDataTable);
+
+
             Hide();
             InventoryMainForm inventoryMainForm = new InventoryMainForm();
             inventoryMainForm.Show();

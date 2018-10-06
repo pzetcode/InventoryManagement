@@ -103,5 +103,11 @@ namespace InventoryManagement
                 childForm.Close();
             }
         }
+
+        private void InventoryMainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //closing app along with window
+            Application.Exit();
+        }
     }
 }
