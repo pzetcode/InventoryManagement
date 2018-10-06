@@ -27,13 +27,20 @@ namespace InventoryManagement
             //SqlCommand sqlGetLoginInfo = new SqlCommand(getLoginInfo);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(getLoginInfo, connString);
             DataTable loginDataTable = new DataTable();
-
             sqlDataAdapter.Fill(loginDataTable);
 
+            if (loginDataTable.Rows.Count >= 1)
+            {
+                Hide();
+                InventoryMainForm inventoryMainForm = new InventoryMainForm();
+                inventoryMainForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Incorect login or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            Hide();
-            InventoryMainForm inventoryMainForm = new InventoryMainForm();
-            inventoryMainForm.Show();
+            }
+            
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
