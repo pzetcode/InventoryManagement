@@ -23,5 +23,18 @@ namespace InventoryManagement
             this.productsTableAdapter.Fill(this.inventorySystemDataSet.Products);
 
         }
+
+        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.productsTableAdapter.FillBy(this.inventorySystemDataSet.Products);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
     }
 }
