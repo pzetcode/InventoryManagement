@@ -109,5 +109,12 @@ namespace InventoryManagement
             //closing app along with window
             Application.Exit();
         }
+
+        private void productsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProductsForm productsForm = new ProductsForm();
+            productsForm.MdiParent = this;
+            productsForm.Show();
+        }
     }
 }
