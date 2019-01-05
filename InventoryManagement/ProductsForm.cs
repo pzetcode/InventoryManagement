@@ -41,11 +41,12 @@ namespace InventoryManagement
         {
             foreach (DataGridViewRow item in dataGridView1.SelectedRows)
             {
-                dataGridView1.Rows.RemoveAt(item.Index);
-                MessageBox.Show(item.Index.ToString());
-                //dataGridView1.colu
-                //dataGridView1.col
+                string pkValue = dataGridView1[0, item.Index].Value.ToString();
+                Login login = new Login();
+                login.DeleteRow(pkValue);
+                dataGridView1.Rows.RemoveAt(item.Index);            
             }
         }
+
     }
 }
