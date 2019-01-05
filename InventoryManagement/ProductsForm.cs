@@ -36,5 +36,16 @@ namespace InventoryManagement
             }
 
         }
+        
+        private void buttonGridDelete_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item in dataGridView1.SelectedRows)
+            {
+                dataGridView1.Rows.RemoveAt(item.Index);
+                MessageBox.Show(item.Index.ToString());
+                //dataGridView1.colu
+                //dataGridView1.col
+            }
+        }
     }
 }

@@ -38,6 +38,7 @@
             this.productsTableAdapter = new InventoryManagement.InventorySystemDataSetTableAdapters.ProductsTableAdapter();
             this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
             this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.buttonGridDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventorySystemDataSet)).BeginInit();
@@ -113,11 +114,22 @@
             this.fillByToolStripButton.Text = "Read data";
             this.fillByToolStripButton.Click += new System.EventHandler(this.fillByToolStripButton_Click);
             // 
+            // buttonGridDelete
+            // 
+            this.buttonGridDelete.Location = new System.Drawing.Point(528, 13);
+            this.buttonGridDelete.Name = "buttonGridDelete";
+            this.buttonGridDelete.Size = new System.Drawing.Size(86, 23);
+            this.buttonGridDelete.TabIndex = 2;
+            this.buttonGridDelete.Text = "Delete";
+            this.buttonGridDelete.UseVisualStyleBackColor = true;
+            this.buttonGridDelete.Click += new System.EventHandler(this.buttonGridDelete_Click);
+            // 
             // ProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(645, 359);
+            this.Controls.Add(this.buttonGridDelete);
             this.Controls.Add(this.fillByToolStrip);
             this.Controls.Add(this.dataGridView1);
             this.Name = "ProductsForm";
@@ -144,5 +156,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn productStatusDataGridViewCheckBoxColumn;
         private System.Windows.Forms.ToolStrip fillByToolStrip;
         private System.Windows.Forms.ToolStripButton fillByToolStripButton;
+        private System.Windows.Forms.Button buttonGridDelete;
     }
 }
