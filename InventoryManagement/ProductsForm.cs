@@ -48,5 +48,28 @@ namespace InventoryManagement
             }
         }
 
+        private void buttonGridAdd_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxProdName.Text))
+            {
+                MessageBox.Show("Product name seems to be empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                Login login = new Login();
+
+                if (checkBoxStatus.Checked)
+                {
+                    login.AddRow(textBoxProdName.Text, 1);
+                }
+                else
+                {
+                    login.AddRow(textBoxProdName.Text, 0);
+                }
+
+
+            }
+
+        }
     }
 }

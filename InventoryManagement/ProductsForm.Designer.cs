@@ -39,6 +39,10 @@
             this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
             this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.buttonGridDelete = new System.Windows.Forms.Button();
+            this.textBoxProdName = new System.Windows.Forms.TextBox();
+            this.checkBoxStatus = new System.Windows.Forms.CheckBox();
+            this.buttonGridAdd = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventorySystemDataSet)).BeginInit();
@@ -57,7 +61,7 @@
             this.productNameDataGridViewTextBoxColumn,
             this.productStatusDataGridViewCheckBoxColumn});
             this.dataGridView1.DataSource = this.productsBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 50);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 100);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(10);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(645, 420);
@@ -110,25 +114,65 @@
             // 
             this.fillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.fillByToolStripButton.Name = "fillByToolStripButton";
-            this.fillByToolStripButton.Size = new System.Drawing.Size(63, 22);
-            this.fillByToolStripButton.Text = "Read data";
+            this.fillByToolStripButton.Size = new System.Drawing.Size(76, 22);
+            this.fillByToolStripButton.Text = "Refresh data";
             this.fillByToolStripButton.Click += new System.EventHandler(this.fillByToolStripButton_Click);
             // 
             // buttonGridDelete
             // 
-            this.buttonGridDelete.Location = new System.Drawing.Point(528, 13);
+            this.buttonGridDelete.Location = new System.Drawing.Point(547, 28);
             this.buttonGridDelete.Name = "buttonGridDelete";
             this.buttonGridDelete.Size = new System.Drawing.Size(86, 23);
             this.buttonGridDelete.TabIndex = 2;
-            this.buttonGridDelete.Text = "Delete";
+            this.buttonGridDelete.Text = "Delete row(s)";
             this.buttonGridDelete.UseVisualStyleBackColor = true;
             this.buttonGridDelete.Click += new System.EventHandler(this.buttonGridDelete_Click);
+            // 
+            // textBoxProdName
+            // 
+            this.textBoxProdName.Location = new System.Drawing.Point(94, 29);
+            this.textBoxProdName.Name = "textBoxProdName";
+            this.textBoxProdName.Size = new System.Drawing.Size(256, 20);
+            this.textBoxProdName.TabIndex = 3;
+            // 
+            // checkBoxStatus
+            // 
+            this.checkBoxStatus.AutoSize = true;
+            this.checkBoxStatus.Location = new System.Drawing.Point(366, 31);
+            this.checkBoxStatus.Name = "checkBoxStatus";
+            this.checkBoxStatus.Size = new System.Drawing.Size(56, 17);
+            this.checkBoxStatus.TabIndex = 4;
+            this.checkBoxStatus.Text = "Status";
+            this.checkBoxStatus.UseVisualStyleBackColor = true;
+            // 
+            // buttonGridAdd
+            // 
+            this.buttonGridAdd.Location = new System.Drawing.Point(428, 28);
+            this.buttonGridAdd.Name = "buttonGridAdd";
+            this.buttonGridAdd.Size = new System.Drawing.Size(95, 23);
+            this.buttonGridAdd.TabIndex = 5;
+            this.buttonGridAdd.Text = "Add new row";
+            this.buttonGridAdd.UseVisualStyleBackColor = true;
+            this.buttonGridAdd.Click += new System.EventHandler(this.buttonGridAdd_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Product name:";
             // 
             // ProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(645, 359);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonGridAdd);
+            this.Controls.Add(this.checkBoxStatus);
+            this.Controls.Add(this.textBoxProdName);
             this.Controls.Add(this.buttonGridDelete);
             this.Controls.Add(this.fillByToolStrip);
             this.Controls.Add(this.dataGridView1);
@@ -157,5 +201,9 @@
         private System.Windows.Forms.ToolStrip fillByToolStrip;
         private System.Windows.Forms.ToolStripButton fillByToolStripButton;
         private System.Windows.Forms.Button buttonGridDelete;
+        private System.Windows.Forms.TextBox textBoxProdName;
+        private System.Windows.Forms.CheckBox checkBoxStatus;
+        private System.Windows.Forms.Button buttonGridAdd;
+        private System.Windows.Forms.Label label1;
     }
 }

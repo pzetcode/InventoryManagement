@@ -98,8 +98,32 @@ namespace InventoryManagement
             {
                 MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            MessageBox.Show(rowID);
         }
-        
+
+        public void AddRow(string prodName, int status)
+        {
+            try
+            {
+                SqlConnectionStringBuilder stringBuilder = new SqlConnectionStringBuilder();
+                stringBuilder.DataSource = _DataSource;
+                stringBuilder.InitialCatalog = _InitialCatalog;
+                stringBuilder.IntegratedSecurity = true;
+
+                using (SqlConnection sqlConnection = new SqlConnection(stringBuilder.ConnectionString))
+                {
+                    sqlConnection.Open();
+                    using (SqlCommand command = new SqlCommand("INSERT INTO [InventorySystem].[dbo].[Products] ([ProductName] ,[ProductStatus]) VALUES ('" + prodName + "'," + status +")", sqlConnection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    sqlConnection.Close();
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
