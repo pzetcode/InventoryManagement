@@ -1,7 +1,7 @@
 # InventoryManagement
 Inventory Management System
 Sample project with login screen and GridView component for add/delete rows into db.
-Table query:
+<br/>"Products" table query:
 <pre><code>CREATE TABLE [dbo].[Products](
 	[ProductID] [int] IDENTITY(1,1) NOT NULL,
 	[ProductName] [varchar](50) NULL,
