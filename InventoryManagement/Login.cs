@@ -14,7 +14,7 @@ namespace InventoryManagement
 
     public partial class Login : Form
     {
-        public string _DataSource = @"NB-ZALEWSKI\NAVDEMO";
+        public string _DataSource = @"DATA\SOURCE";
         public string _InitialCatalog = "InventorySystem";
 
         public Login()
